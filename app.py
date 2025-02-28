@@ -1,5 +1,5 @@
 from models import Student
-from flask import Flask,render_template,redirect,url_for
+from flask import Flask,render_template,redirect,url_for,request
 
 app = Flask(__name__)
 
@@ -19,6 +19,15 @@ def delete(id):
     s=Student.get_by_id(id)
     s.delete_instance()
     return redirect(url_for('index'))
+
+@app.route('/create')
+def create():
+    if request.method == 'POST':
+        n=request.form['name']
+        f=request.form['family']
+        Student.create(name=n,family=f)
+        return redirect(url_for('index'))
+    return render_template('create.html')
 
 if __name__=="__main__":
     app.run(debug=True)
