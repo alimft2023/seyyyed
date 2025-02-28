@@ -9,5 +9,6 @@ def index():
     students=Student.select()
     return render_template('index.html',students=students)
 
+
 if __name__=="__main__":
     app.run(debug=True)
