@@ -2,9 +2,7 @@
 
 {% block content %}
     {% for student in students%}
-       <p> {{student.id}} </p>
-       <p> {{student.name}} </p>
-       <p> {{student.family}} </p>
+      <a href="{{ url_for('details',id=student.id) }}"> <p> {{student.id}} </p> </a>
        <hr>
     {% endfor %}
 {% endblock content %}
